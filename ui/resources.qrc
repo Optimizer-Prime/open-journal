@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/logo.png</file>
+        <file>resources/save.png</file>
+        <file>resources/delete.png</file>
+        <file>resources/open.png</file>
+        <file>resources/decrypt.png</file>
+        <file>resources/encrypt.png</file>
+        <file>resources/print.png</file>
+        <file>resources/new.png</file>
+    </qresource>
+</RCC>
