@@ -141,8 +141,7 @@ class SaveThread(QThread):
         self.wait()
 
     def run(self):
-        MainWindow().handleSaveJournal()
-        self.sleep(5)
+        MainWindow().autosaveJournal()
 
 
 if __name__ == '__main__':
