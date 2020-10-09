@@ -80,6 +80,9 @@ background: 1</string>
       <height>25</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Displays the filepath to the currently open journal.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">background: 1</string>
     </property>
@@ -134,14 +137,17 @@ background: 1</string>
       <height>48</height>
      </size>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Save journal (Ctrl + S)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/resources/save.png);</string>
+     <string notr="true">QPushButton {border-image: url(:/resources/save.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="shortcut">
-     <string>Ctrl+S</string>
     </property>
    </widget>
    <widget class="QPushButton" name="deleteBtn">
@@ -165,8 +171,14 @@ background: 1</string>
       <height>48</height>
      </size>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete journal&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/resources/delete.png);</string>
+     <string notr="true">QPushButton {border-image: url(:/resources/delete.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};</string>
     </property>
     <property name="text">
      <string/>
@@ -193,14 +205,18 @@ background: 1</string>
       <height>48</height>
      </size>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open existing journal (Ctrl + O)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/resources/open.png);</string>
+     <string notr="true">QPushButton {border-image: url(:/resources/open.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};
+</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="shortcut">
-     <string>Ctrl+O</string>
     </property>
    </widget>
    <widget class="QPushButton" name="encryptBtn">
@@ -224,8 +240,14 @@ background: 1</string>
       <height>48</height>
      </size>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Encrypt currently open journal&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/resources/encrypt.png);</string>
+     <string notr="true">QPushButton {border-image: url(:/resources/encrypt.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};</string>
     </property>
     <property name="text">
      <string/>
@@ -252,8 +274,14 @@ background: 1</string>
       <height>48</height>
      </size>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Decrypt currently open journal&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/resources/decrypt.png);</string>
+     <string notr="true">QPushButton {border-image: url(:/resources/decrypt.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};</string>
     </property>
     <property name="text">
      <string/>
@@ -280,14 +308,17 @@ background: 1</string>
       <height>48</height>
      </size>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Print journal&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/resources/print.png);</string>
+     <string notr="true">QPushButton {border-image: url(:/resources/print.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="shortcut">
-     <string>Ctrl+P</string>
     </property>
    </widget>
    <widget class="QPushButton" name="newBtn">
@@ -311,14 +342,18 @@ background: 1</string>
       <height>48</height>
      </size>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Create new journal (Ctrl + N)&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
-     <string notr="true">border-image: url(:/resources/new.png);</string>
+     <string notr="true">QPushButton {border-image: url(:/resources/new.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};
+</string>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="shortcut">
-     <string>Ctrl+N</string>
     </property>
    </widget>
   </widget>
@@ -575,14 +610,15 @@ background: 1</string>
     <addaction name="Open"/>
     <addaction name="separator"/>
     <addaction name="Save"/>
-    <addaction name="Save_As"/>
+    <addaction name="separator"/>
+    <addaction name="Delete"/>
     <addaction name="separator"/>
     <addaction name="Encrypt_Journal"/>
     <addaction name="Decrypt_Journal"/>
     <addaction name="separator"/>
-    <addaction name="actionPrint"/>
+    <addaction name="Print"/>
     <addaction name="separator"/>
-    <addaction name="actionExit"/>
+    <addaction name="Exit"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="palette">
@@ -1073,15 +1109,33 @@ background: 1</string>
    <property name="text">
     <string>New</string>
    </property>
+   <property name="toolTip">
+    <string>Create new journal</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
   </action>
   <action name="Open">
    <property name="text">
-    <string>Open                              Ctrl+O</string>
+    <string>Open</string>
+   </property>
+   <property name="toolTip">
+    <string>Open existing journal</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="Save">
    <property name="text">
-    <string>Save                                Ctrl+S</string>
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save journal</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="Save_As">
@@ -1098,10 +1152,16 @@ background: 1</string>
    <property name="text">
     <string>Encrypt Journal</string>
    </property>
+   <property name="toolTip">
+    <string>Encrypt currently open journal</string>
+   </property>
   </action>
   <action name="Decrypt_Journal">
    <property name="text">
     <string>Decrypt Journal</string>
+   </property>
+   <property name="toolTip">
+    <string>Decrypt currently open journal</string>
    </property>
   </action>
   <action name="Preferences">
@@ -1109,14 +1169,28 @@ background: 1</string>
     <string>Preferences</string>
    </property>
   </action>
-  <action name="actionPrint">
+  <action name="Print">
    <property name="text">
     <string>Print</string>
    </property>
+   <property name="toolTip">
+    <string>Print journal</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
   </action>
-  <action name="actionExit">
+  <action name="Exit">
    <property name="text">
     <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+  </action>
+  <action name="Delete">
+   <property name="text">
+    <string>Delete Journal</string>
    </property>
   </action>
  </widget>

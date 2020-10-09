@@ -4,7 +4,7 @@ import os
 import threading
 import schedule
 import time
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox
 from PyQt5.QtCore import QThread
 from ui.MainWindow import Ui_MainWindow
 
@@ -21,6 +21,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         qt_rectangle.moveCenter(center_point)
         self.move(qt_rectangle.topLeft())
 
+        # in app buttons
         self.newBtn.clicked.connect(self.handleNewJournal)
         self.openBtn.clicked.connect(self.handleOpenJournal)
         self.saveBtn.clicked.connect(self.handleSaveJournal)
@@ -29,8 +30,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.deleteBtn.clicked.connect(self.handleDeleteJournal)
         self.printBtn.clicked.connect(self.handlePrint)
 
-        # saver = QThread(self.autosaveJournal())
-        # saver.start()
+        # menubar buttons
+        self.New.triggered.connect(self.handleNewJournal)
+        self.Open.triggered.connect(self.handleOpenJournal)
+        self.Save.triggered.connect(self.handleSaveJournal)
+        self.Delete.triggered.connect(self.handleDeleteJournal)
+        self.Encrypt_Journal.triggered.connect(self.handleEncrypt)
+        self.Decrypt_Journal.triggered.connect(self.handleDecrypt)
+        self.Print.triggered.connect(self.handlePrint)
+
+        # self.saver = SaveThread()
+        # self.saver.start()
 
     def handleNewJournal(self):
         # save current journal, if applicable
@@ -86,9 +96,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     # def autosaveJournal(self):
+    #     schedule.every(5).seconds.do(self.handleSaveJournal)
     #     while True:
-    #         self.handleSaveJournal()
-    #         time.sleep(10)
+    #         schedule.run_pending()
+    #         time.sleep(1)
 
     def handleEncrypt(self):
         pass
@@ -99,9 +110,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def handleDeleteJournal(self):
         try:
             filename = self.journalName.text()
-            os.remove(filename)
-            self.journalEdit.clear()
-            self.journalName.clear()
+            if filename != '':
+                confirm = QMessageBox()
+                confirm.setIcon(QMessageBox.Warning)
+
+                confirm.setWindowTitle('Confirm Journal Deletion')
+                confirm.setText('You are about to delete the currently opened journal.')
+                confirm.setInformativeText('This action cannot be undone. Continue?')
+                confirm.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+                return_value = confirm.exec_()
+                if return_value == QMessageBox.Yes:
+                    os.remove(filename)
+                    self.journalEdit.clear()
+                    self.journalName.clear()
+                else:
+                    pass
         except FileNotFoundError:
             pass
 
