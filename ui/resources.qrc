@@ -8,5 +8,6 @@
         <file>resources/encrypt.png</file>
         <file>resources/print.png</file>
         <file>resources/new.png</file>
+        <file>resources/blankpage.png</file>
     </qresource>
 </RCC>

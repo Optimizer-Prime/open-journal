@@ -67,8 +67,9 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-background: 1</string>
+     <string notr="true">background-color: rgba(191, 64, 64, 0);
+background: 1
+</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="journalName">
@@ -287,40 +288,6 @@ QToolTip {	background-color: rgb(238, 238, 236);
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="printBtn">
-    <property name="geometry">
-     <rect>
-      <x>5</x>
-      <y>470</y>
-      <width>48</width>
-      <height>48</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>48</width>
-      <height>48</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>48</width>
-      <height>48</height>
-     </size>
-    </property>
-    <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Print journal&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {border-image: url(:/resources/print.png)}
-QToolTip {	background-color: rgb(238, 238, 236);
-                           color: black; 
-                           border: black solid 1px};</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QPushButton" name="newBtn">
     <property name="geometry">
      <rect>
@@ -356,6 +323,16 @@ QToolTip {	background-color: rgb(238, 238, 236);
      <string/>
     </property>
    </widget>
+   <zorder>logo</zorder>
+   <zorder>journalName</zorder>
+   <zorder>journal_path</zorder>
+   <zorder>saveBtn</zorder>
+   <zorder>deleteBtn</zorder>
+   <zorder>openBtn</zorder>
+   <zorder>encryptBtn</zorder>
+   <zorder>decryptBtn</zorder>
+   <zorder>newBtn</zorder>
+   <zorder>journalEdit</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -615,8 +592,6 @@ QToolTip {	background-color: rgb(238, 238, 236);
     <addaction name="separator"/>
     <addaction name="Encrypt_Journal"/>
     <addaction name="Decrypt_Journal"/>
-    <addaction name="separator"/>
-    <addaction name="Print"/>
     <addaction name="separator"/>
     <addaction name="Exit"/>
    </widget>

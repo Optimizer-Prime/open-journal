@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
+import subprocess
 import threading
 import schedule
 import time
@@ -28,7 +29,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.encryptBtn.clicked.connect(self.handleEncrypt)
         self.decryptBtn.clicked.connect(self.handleDecrypt)
         self.deleteBtn.clicked.connect(self.handleDeleteJournal)
-        self.printBtn.clicked.connect(self.handlePrint)
 
         # menubar buttons
         self.New.triggered.connect(self.handleNewJournal)
@@ -37,12 +37,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Delete.triggered.connect(self.handleDeleteJournal)
         self.Encrypt_Journal.triggered.connect(self.handleEncrypt)
         self.Decrypt_Journal.triggered.connect(self.handleDecrypt)
-        self.Print.triggered.connect(self.handlePrint)
 
         # self.saver = SaveThread()
         # self.saver.start()
 
-    def handleNewJournal(self):
+    def handleNewJournal(self): # TODO close journal if one open after saving
         # save current journal, if applicable
         self.handleSaveJournal()
 
@@ -55,6 +54,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         try:
             if filename != '':
+                # clear previous journal
+                self.journalName.clear()
+                self.journalEdit.clear()
+
                 self.journalName.setText(filename)
                 file = open(filename, 'w')
                 text = self.journalEdit.toPlainText()
@@ -127,9 +130,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     pass
         except FileNotFoundError:
             pass
-
-    def handlePrint(self):
-        pass
 
 
 class SaveThread(QThread):
