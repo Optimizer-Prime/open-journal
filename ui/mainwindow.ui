@@ -323,6 +323,40 @@ QToolTip {	background-color: rgb(238, 238, 236);
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="closeBtn">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>470</y>
+      <width>48</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>48</width>
+      <height>48</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>48</width>
+      <height>48</height>
+     </size>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Save and close journal&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {border-image: url(:/resources/close.png)}
+QToolTip {	background-color: rgb(238, 238, 236);
+                           color: black; 
+                           border: black solid 1px};</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>logo</zorder>
    <zorder>journalName</zorder>
    <zorder>journal_path</zorder>
@@ -333,6 +367,7 @@ QToolTip {	background-color: rgb(238, 238, 236);
    <zorder>decryptBtn</zorder>
    <zorder>newBtn</zorder>
    <zorder>journalEdit</zorder>
+   <zorder>closeBtn</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -592,6 +627,8 @@ QToolTip {	background-color: rgb(238, 238, 236);
     <addaction name="separator"/>
     <addaction name="Encrypt_Journal"/>
     <addaction name="Decrypt_Journal"/>
+    <addaction name="separator"/>
+    <addaction name="Close"/>
     <addaction name="separator"/>
     <addaction name="Exit"/>
    </widget>
@@ -1166,6 +1203,11 @@ QToolTip {	background-color: rgb(238, 238, 236);
   <action name="Delete">
    <property name="text">
     <string>Delete Journal</string>
+   </property>
+  </action>
+  <action name="Close">
+   <property name="text">
+    <string>Close Journal</string>
    </property>
   </action>
  </widget>

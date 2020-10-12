@@ -29,6 +29,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.encryptBtn.clicked.connect(self.handleEncrypt)
         self.decryptBtn.clicked.connect(self.handleDecrypt)
         self.deleteBtn.clicked.connect(self.handleDeleteJournal)
+        self.closeBtn.clicked.connect(self.handleCloseJournal)
 
         # menubar buttons
         self.New.triggered.connect(self.handleNewJournal)
@@ -37,11 +38,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Delete.triggered.connect(self.handleDeleteJournal)
         self.Encrypt_Journal.triggered.connect(self.handleEncrypt)
         self.Decrypt_Journal.triggered.connect(self.handleDecrypt)
+        self.Close.triggered.connect(self.handleCloseJournal)
+        # TODO add exit function
 
         # self.saver = SaveThread()
         # self.saver.start()
 
-    def handleNewJournal(self): # TODO close journal if one open after saving
+    def handleNewJournal(self):
         # save current journal, if applicable
         self.handleSaveJournal()
 
@@ -54,9 +57,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         try:
             if filename != '':
-                # clear previous journal
-                self.journalName.clear()
-                self.journalEdit.clear()
+                if self.journalName.text() != '':
+                    # clear previous journal
+                    self.journalName.clear()
+                    self.journalEdit.clear()
 
                 self.journalName.setText(filename)
                 file = open(filename, 'w')
@@ -86,6 +90,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except FileNotFoundError:
             pass
 
+    def handleCloseJournal(self):
+        self.handleSaveJournal()
+
+        try:
+            filename = self.journalName.text()
+            if filename != '':
+                self.journalName.clear()
+                self.journalEdit.clear()
+            else:
+                self.statusbar.showMessage('No journal currently open.', 2000)
+        except FileNotFoundError:
+            pass
+
     # TODO add autosave feature
     def handleSaveJournal(self):
         try:
@@ -97,12 +114,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             file.close()
         except FileNotFoundError:
             pass
-
-    # def autosaveJournal(self):
-    #     schedule.every(5).seconds.do(self.handleSaveJournal)
-    #     while True:
-    #         schedule.run_pending()
-    #         time.sleep(1)
 
     def handleEncrypt(self):
         pass
@@ -128,6 +139,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.journalName.clear()
                 else:
                     pass
+            else:
+                self.statusbar.showMessage('No journal open, nothing to delete.', 2000)
         except FileNotFoundError:
             pass
 
@@ -141,7 +154,12 @@ class SaveThread(QThread):
         self.wait()
 
     def run(self):
-        MainWindow().autosaveJournal()
+        MainWindow().handleSaveJournal()
+        self.sleep(10)
+        # schedule.every(5).seconds.do(MainWindow().handleSaveJournal)
+        # while True:
+        #     schedule.run_pending()
+        #     time.sleep(1)
 
 
 if __name__ == '__main__':
