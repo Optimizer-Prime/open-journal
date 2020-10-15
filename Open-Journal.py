@@ -5,9 +5,19 @@ import subprocess
 import threading
 import schedule
 import time
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox
+import shutil
+from cryptography.fernet import Fernet
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox, QPushButton, QLabel
 from PyQt5.QtCore import QThread
 from ui.MainWindow import Ui_MainWindow
+
+
+class AboutWindow(QMainWindow):
+    pass
+
+
+class PreferencesWindow(QMainWindow):
+    pass
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -40,6 +50,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Decrypt_Journal.triggered.connect(self.handleDecrypt)
         self.Close.triggered.connect(self.handleCloseJournal)
         # TODO add exit function
+
+        self.keyStatusWidget()
 
         # self.saver = SaveThread()
         # self.saver.start()
@@ -115,11 +127,118 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except FileNotFoundError:
             pass
 
+    def createKey(self):
+        """Generates encryption key and saves to file."""
+        if os.path.exists('open_journal_key.key'):
+            return open('open_journal_key.key', 'rb').read()
+        else:
+            key = Fernet.generate_key()
+            with open('open_journal_key.key', 'wb') as key_file:
+                key_file.write(key)
+            return open('open_journal_key.key', 'rb').read()
+
+    def loadKey(self):
+        """Attempts to load key from root program directory, otherwise prompts user for location."""
+        if os.path.exists('open_journal_key.key'):
+            return open('open_journal_key.key', 'rb').read()
+        else:
+            try:
+                key_options = QMessageBox()
+                key_options.setIcon(QMessageBox.Question)
+
+                key_options.setWindowTitle('Create Or Load Key')
+                key_options.setText('No key was found in the program directory.')
+                key_options.setInformativeText('Would you like to create a key or load an existing key?\n'
+                                               '\nNote: You only need to create a key once.')
+                key_options.addButton(QPushButton('Load Key'), QMessageBox.YesRole)
+                key_options.addButton(QPushButton('Create Key'), QMessageBox.YesRole)
+                key_options.addButton(QPushButton('Cancel'), QMessageBox.RejectRole)
+                return_value = key_options.exec_()
+                if return_value == 0:  # 0 refers to load key button
+                    options = QFileDialog.Options()
+                    options |= QFileDialog.DontUseNativeDialog
+                    filename, _ = QFileDialog.getOpenFileName(self, "Load Encryption Key",
+                                                              "./journals",
+                                                              "All Files (*)",
+                                                              "Key File (.key)",
+                                                              options=options)
+
+                    current_dir = os.getcwd()
+                    shutil.copy(filename, current_dir)
+                    old_key = os.path.basename(filename)
+                    os.rename(old_key, r'open_journal_key.key')  # rename to expected name
+                    return open(filename, 'rb').read()
+                elif return_value == 1:  # 1 refers to create key button
+                    self.createKey()
+                elif return_value == 2:
+                    pass
+            except FileNotFoundError or TypeError:
+                pass
+
+    def checkKeyStatus(self):
+        return os.path.exists('open_journal_key.key')
+
+    def keyStatusWidget(self):
+        key_found = QLabel('Key loaded')
+        key_found.setStyleSheet('border :1px solid white;'
+                                'background-color: rgb(115, 210, 22);')
+        key_not = QLabel('Key not loaded')
+        key_not.setStyleSheet('border :1px solid white;'
+                              'background-color: rgb(204, 0, 0);')
+        if self.checkKeyStatus():
+            self.statusbar.addPermanentWidget(key_found)
+        else:
+            self.statusbar.addPermanentWidget(key_not)
+
     def handleEncrypt(self):
-        pass
+        try:
+            key = self.loadKey()
+            self.handleSaveJournal()
+            filename = self.journalName.text()
+            f = Fernet(key)
+
+            # read journal file
+            with open(filename, 'rb') as file:
+                journal = file.read()
+
+            # encrypt journal and write to file
+            encrypted_journal = f.encrypt(journal)
+            with open(filename, 'wb') as file:
+                file.write(encrypted_journal)
+
+            # display encrypted contents
+            with open(filename) as file:
+                data = file.read()
+                self.journalEdit.setText(data)
+        except FileNotFoundError:
+            self.statusbar.showMessage('Encryption failed. No file currently open.', 2000)
+        except TypeError:
+            pass
 
     def handleDecrypt(self):
-        pass
+        try:
+            key = self.loadKey()
+            self.handleSaveJournal()
+            filename = self.journalName.text()
+            f = Fernet(key)
+
+            # read the journal file
+            with open(filename, 'rb') as file:
+                encrypted_journal = file.read()
+
+            # decrypt the journal and write to file
+            decrypted_journal = f.decrypt(encrypted_journal)
+            with open(filename, 'wb') as file:
+                file.write(decrypted_journal)
+
+            # display decrypted contents
+            with open(filename) as file:
+                data = file.read()
+                self.journalEdit.setText(data)
+        except FileNotFoundError:
+            self.statusbar.showMessage('Decryption failed. No file currently open.', 2000)
+        except TypeError:
+            pass
 
     def handleDeleteJournal(self):
         try:
