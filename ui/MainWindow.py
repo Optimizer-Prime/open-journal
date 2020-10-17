@@ -62,7 +62,7 @@ class Ui_MainWindow(object):
         self.saveBtn.setText("")
         self.saveBtn.setObjectName("saveBtn")
         self.deleteBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.deleteBtn.setGeometry(QtCore.QRect(5, 410, 48, 48))
+        self.deleteBtn.setGeometry(QtCore.QRect(5, 470, 48, 48))
         self.deleteBtn.setMinimumSize(QtCore.QSize(48, 48))
         self.deleteBtn.setMaximumSize(QtCore.QSize(48, 48))
         self.deleteBtn.setStyleSheet("QPushButton {border-image: url(:/resources/delete.png)}\n"
@@ -114,7 +114,7 @@ class Ui_MainWindow(object):
         self.newBtn.setText("")
         self.newBtn.setObjectName("newBtn")
         self.closeBtn = QtWidgets.QPushButton(self.centralwidget)
-        self.closeBtn.setGeometry(QtCore.QRect(5, 470, 48, 48))
+        self.closeBtn.setGeometry(QtCore.QRect(5, 530, 48, 48))
         self.closeBtn.setMinimumSize(QtCore.QSize(48, 48))
         self.closeBtn.setMaximumSize(QtCore.QSize(48, 48))
         self.closeBtn.setStyleSheet("QPushButton {border-image: url(:/resources/close.png)}\n"
@@ -123,6 +123,16 @@ class Ui_MainWindow(object):
 "                           border: black solid 1px};")
         self.closeBtn.setText("")
         self.closeBtn.setObjectName("closeBtn")
+        self.export_keyBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.export_keyBtn.setGeometry(QtCore.QRect(5, 410, 48, 48))
+        self.export_keyBtn.setMinimumSize(QtCore.QSize(48, 48))
+        self.export_keyBtn.setMaximumSize(QtCore.QSize(48, 48))
+        self.export_keyBtn.setStyleSheet("QPushButton {border-image: url(:/resources/export_key.png)}\n"
+"QToolTip {    background-color: rgb(238, 238, 236);\n"
+"                           color: black; \n"
+"                           border: black solid 1px};")
+        self.export_keyBtn.setText("")
+        self.export_keyBtn.setObjectName("export_keyBtn")
         self.logo.raise_()
         self.journalName.raise_()
         self.journal_path.raise_()
@@ -134,6 +144,7 @@ class Ui_MainWindow(object):
         self.newBtn.raise_()
         self.journalEdit.raise_()
         self.closeBtn.raise_()
+        self.export_keyBtn.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 950, 22))
@@ -401,6 +412,8 @@ class Ui_MainWindow(object):
         self.Delete.setObjectName("Delete")
         self.Close = QtWidgets.QAction(MainWindow)
         self.Close.setObjectName("Close")
+        self.Export_key = QtWidgets.QAction(MainWindow)
+        self.Export_key.setObjectName("Export_key")
         self.menuFile.addAction(self.New)
         self.menuFile.addAction(self.Open)
         self.menuFile.addSeparator()
@@ -410,6 +423,7 @@ class Ui_MainWindow(object):
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.Encrypt_Journal)
         self.menuFile.addAction(self.Decrypt_Journal)
+        self.menuFile.addAction(self.Export_key)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.Close)
         self.menuFile.addSeparator()
@@ -436,6 +450,7 @@ class Ui_MainWindow(object):
         self.decryptBtn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Decrypt currently open journal</p></body></html>"))
         self.newBtn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Create new journal (Ctrl + N)</p><p><br/></p></body></html>"))
         self.closeBtn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Save and close journal</p></body></html>"))
+        self.export_keyBtn.setToolTip(_translate("MainWindow", "<html><head/><body><p>Export encryption key</p></body></html>"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuHelp.setTitle(_translate("MainWindow", "Help"))
         self.menuSettings.setTitle(_translate("MainWindow", "Settings"))
@@ -462,4 +477,5 @@ class Ui_MainWindow(object):
         self.Exit.setText(_translate("MainWindow", "Exit"))
         self.Delete.setText(_translate("MainWindow", "Delete Journal"))
         self.Close.setText(_translate("MainWindow", "Close Journal"))
+        self.Export_key.setText(_translate("MainWindow", "Export encryption key"))
 import ui.resources_rc

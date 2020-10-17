@@ -9,5 +9,6 @@
         <file>resources/print.png</file>
         <file>resources/new.png</file>
         <file>resources/close.png</file>
+        <file>resources/export_key.png</file>
     </qresource>
 </RCC>
