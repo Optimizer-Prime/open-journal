@@ -1,14 +1,9 @@
 #!/usr/bin/env python
 import sys
 import os
-import subprocess
-import threading
-import schedule
-import time
 import shutil
 from cryptography.fernet import Fernet
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox, QPushButton, QLabel
-from PyQt5.QtCore import QThread
 from ui.MainWindow import Ui_MainWindow
 from ui.AboutWindow import Ui_AboutWindow
 

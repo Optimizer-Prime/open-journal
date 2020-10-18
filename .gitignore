@@ -139,4 +139,4 @@ dmypy.json
 cython_debug/
 
 # Qt stuff
-mainwindow.pyproject.user
+open-journal.pyproject.user
