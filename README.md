@@ -1,5 +1,5 @@
 # open-journal
-A simple, secure, open-source journal for Linux. No user data is collected.
+A simple, private, open-source journal for Linux. No user data is collected.
 
 ### Encryption
 Journals can be optionally encrypted using a uniquely generated encryption key. The *cryptography* library used is built on AES. The encryption key only needs to be generated once. Export a copy of it from the program and store it in a safe place. 
