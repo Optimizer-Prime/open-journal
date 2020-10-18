@@ -33,7 +33,7 @@ To install and use Open Journal, choose one of the following options.
 $ python Open-Journal.py
 ~~~
 
-2.) You can download the executable from the *releases* page and try running that. It was built using PyInstaller and Python 3.6.12.
+2.) You can download the executable from the *releases* page. It was built using PyInstaller and Python 3.6.12.
 
 Open Journal was developed and tested on Linux (Ubuntu 20.04.1 LTS). However, if you have all requirements met, you should have no issue running it on Windows or MacOS. At least, in its Python form.
 
