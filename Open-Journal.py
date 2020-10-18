@@ -25,10 +25,6 @@ class AboutWindow(QMainWindow, Ui_AboutWindow):
         self.move(qt_rectangle.topLeft())
 
 
-class PreferencesWindow(QMainWindow):
-    pass
-
-
 class MainWindow(QMainWindow, Ui_MainWindow):
 
     def __init__(self, *args, **kwargs):
@@ -60,13 +56,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Decrypt_Journal.triggered.connect(self.handleDecrypt)
         self.Export_key.triggered.connect(self.exportKey)
         self.Close.triggered.connect(self.handleCloseJournal)
+        self.Exit.triggered.connect(self.onClose)
 
         self.About_Open_Journal.triggered.connect(self.handleAboutWindow)
-        # TODO add exit function
 
-        self.keyStatusWidget()
+        self.keyStatusWidget()  # check for key
+
+        app.aboutToQuit.connect(self.onClose)
+
+        saver = threading.Thread(target=self.autosave)
+        saver.start()
+
         # self.saver = SaveThread()
         # self.saver.start()
+
+    def onClose(self):
+        """Auto-save journal before closing."""
+        self.handleSaveJournal()
+        sys.exit(0)
 
     def handleNewJournal(self):
         # save current journal, if applicable
@@ -127,12 +134,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except FileNotFoundError:
             pass
 
-    # TODO add autosave feature
     def handleSaveJournal(self):
         try:
             filename = self.journalName.text()
             file = open(filename, 'w')
-            text = self.journalEdit.toPlainText()  # TODO use rich text or html
+            text = self.journalEdit.toPlainText()
             file.write(text)
             self.statusbar.showMessage("Saving '{filepath}'...".format(filepath=filename), 2000)
             file.close()
@@ -303,23 +309,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def handleAboutWindow(self):
         about_window = AboutWindow(self)
         about_window.show()
-
-
-class SaveThread(QThread):
-
-    def __init__(self):
-        QThread.__init__(self)
-
-    def __del__(self):
-        self.wait()
-
-    def run(self):
-        MainWindow().handleSaveJournal()
-        self.sleep(10)
-        # schedule.every(5).seconds.do(MainWindow().handleSaveJournal)
-        # while True:
-        #     schedule.run_pending()
-        #     time.sleep(1)
 
 
 if __name__ == '__main__':
