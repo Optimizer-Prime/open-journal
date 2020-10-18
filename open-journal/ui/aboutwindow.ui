@@ -60,7 +60,7 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open Journal v1.0.0&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Simple, secure, open-source journal for linux.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;For more information visit: &lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Optimizer-Prime/open-journal&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#eeeeec;&quot;&gt;https://github.com/Optimizer-Prime/open-journal&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Licensed under GPL-3.0&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Copyright 2020 Stuart Clayton&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Open Journal v1.0.0&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;Simple, private, open-source journal for linux.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;For more information visit: &lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/Optimizer-Prime/open-journal&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#eeeeec;&quot;&gt;https://github.com/Optimizer-Prime/open-journal&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;Licensed under GPL-3.0&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;Copyright 2020 Stuart Clayton&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignHCenter|Qt::AlignTop</set>
