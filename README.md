@@ -54,7 +54,7 @@ sys.setrecursionlimit(5000)
 
 3.) Build the executable.
 ~~~
-pyinstall Open-Journal.spec
+pyinstaller Open-Journal.spec
 ~~~
 A *build* and *dist* folder will be created. The executable is located under *dist* with the name **Open-Journal**.
 
