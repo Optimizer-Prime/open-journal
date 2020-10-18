@@ -1,5 +1,10 @@
 # open-journal
-A simple, secure, open-source journal for Linux. 
+A simple, secure, open-source journal for Linux. No user data is collected.
+
+### Encryption
+Journals can be optionally encrypted using a generated encryption key. The *cryptography* library used is built on AES. The encryption key only needs to be generated once. Export a copy of it from the program and store it in a safe place. 
+
+The encryption key must be stored in the same location as **Open-Journal.py** or the executable. 
 
 ### Prerequisites 
 In order to run Open Journal, you must have the prerequisites defined in **requirements.txt** installed in your environment.
@@ -23,14 +28,14 @@ pip3 install cryptography
 ### Installation and Usage
 To install and use Open Journal, choose one of the following options.
 
-1.) Just clone the repository to your computer and run **Open-Journal.py** from your terminal. Alternatively, run it from an IDE of your choice, such as PyCharm.
+1.) Clone the repository to your computer and run **Open-Journal.py** from your terminal. Alternatively, run it from an IDE of your choice, such as PyCharm.
 ~~~
 $ python Open-Journal.py
 ~~~
 
 2.) You can download the executable from the *releases* page and try running that. It was built using PyInstaller and Python 3.6.12.
 
-Open Journal was developed and tested on linux (Ubuntu 20.04.1 LTS). However, if you have all requirements met, you should have no issue running it on Windows or MacOS. At least, in its Python form.
+Open Journal was developed and tested on Linux (Ubuntu 20.04.1 LTS). However, if you have all requirements met, you should have no issue running it on Windows or MacOS. At least, in its Python form.
 
 ### Building from source
 If you wish to build an executable yourself from the source code provided you can do so as outlined here.
