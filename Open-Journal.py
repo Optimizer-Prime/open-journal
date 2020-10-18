@@ -64,12 +64,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         app.aboutToQuit.connect(self.onClose)
 
-        saver = threading.Thread(target=self.autosave)
-        saver.start()
-
-        # self.saver = SaveThread()
-        # self.saver.start()
-
     def onClose(self):
         """Auto-save journal before closing."""
         self.handleSaveJournal()
