@@ -153,26 +153,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def exportKey(self):
         """Copies encryption key to selected directory."""
-        notice = QMessageBox()
-        notice.setIcon(QMessageBox.Information)
-        notice.setWindowTitle('Export Key')
-        notice.setText('Save your encryption key to a safe place and keep it backed up.\n'
-                       '\nOnly one key is used to encrypt journals. If you lose this key, you will not'
-                       ' be able to recover any encrypted journals.')
-        notice.setStandardButtons(QMessageBox.Ok)
-        notice.exec_()
-        try:
-            options = QFileDialog.Options()
-            options |= QFileDialog.DontUseNativeDialog
-            filename, _ = QFileDialog.getSaveFileName(self, "Export Encryption Key",
-                                                      "./open_journal_key.key",
-                                                      "All Files (*)",
-                                                      options=options)
+        if self.checkKeyStatus():
+            notice = QMessageBox()
+            notice.setIcon(QMessageBox.Information)
+            notice.setWindowTitle('Export Key')
+            notice.setText('Save your encryption key to a safe place and keep it backed up.\n'
+                           '\nOnly one key is used to encrypt journals. If you lose this key, you will not'
+                           ' be able to recover any encrypted journals.')
+            notice.setStandardButtons(QMessageBox.Ok)
+            notice.exec_()
+            try:
+                options = QFileDialog.Options()
+                options |= QFileDialog.DontUseNativeDialog
+                filename, _ = QFileDialog.getSaveFileName(self, "Export Encryption Key",
+                                                          "./open_journal_key.key",
+                                                          "All Files (*)",
+                                                          options=options)
 
-            if filename != '':
-                shutil.copy('open_journal_key.key', filename)
-        except FileNotFoundError:
-            pass
+                if filename != '':
+                    shutil.copy('open_journal_key.key', filename)
+            except FileNotFoundError:
+                pass
+        else:
+            self.loadKey()
 
     def loadKey(self):
         """Attempts to load key from root program directory, otherwise prompts user for location."""
