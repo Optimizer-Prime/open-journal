@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-import sys
+from cryptography.fernet import Fernet
 import os
 import shutil
-from cryptography.fernet import Fernet
+import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox, QPushButton, QLabel
 from ui.MainWindow import Ui_MainWindow
 from ui.AboutWindow import Ui_AboutWindow
