@@ -16,6 +16,6 @@ setup(
     python_requires='>=3.6',
     entry_points = {
     'console_scripts': [
-        'openjournal=src.openjournal:main']
+        'openjournal=open-journal.openjournal:main']
         }
 )
