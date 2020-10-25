@@ -14,6 +14,7 @@ class AboutWindow(QMainWindow, Ui_AboutWindow):
         super(AboutWindow, self).__init__(*args, **kwargs)
         self.setupUi(self)
 
+        # centers window
         qt_rectangle = self.frameGeometry()
         center_point = QDesktopWidget().availableGeometry().center()
         qt_rectangle.moveCenter(center_point)
@@ -65,6 +66,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sys.exit(0)
 
     def handleNewJournal(self):
+        """Create a new journal. If no journal open but text typed, it will be saved."""
         # save current journal, if applicable
         self.handleSaveJournal()
 
@@ -91,6 +93,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def handleOpenJournal(self):
+        """Open an existing journal."""
         # save current journal, if applicable
         self.handleSaveJournal()
 
@@ -111,6 +114,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def handleCloseJournal(self):
+        """Close currently open journal."""
         self.handleSaveJournal()
 
         try:
@@ -124,12 +128,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def handleSaveJournal(self):
+        """Save currently open journal."""
         try:
             filename = self.journalName.text()
             file = open(filename, 'w')
             text = self.journalEdit.toPlainText()
             file.write(text)
-            self.statusbar.showMessage("Saving '{filepath}'...".format(filepath=filename), 2000)
+            self.statusbar.showMessage(f"Saving '{filename}'...", 2000)
             file.close()
         except FileNotFoundError:
             pass
@@ -211,9 +216,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 pass
 
     def checkKeyStatus(self):
+        """Checks if an existing key is located in same location as program."""
         return os.path.exists('open_journal_key.key')
 
     def keyStatusWidget(self):
+        """Displays key status in statusbar."""
         if self.checkKeyStatus():
             key_status = QLabel('Key loaded')
             key_status.setStyleSheet('border :1px solid white;'
@@ -226,6 +233,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.statusbar.addPermanentWidget(key_status)
 
     def handleEncrypt(self):
+        """Encrypts currently open journal."""
         try:
             key = self.loadKey()
             self.handleSaveJournal()
@@ -243,8 +251,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 file.write(encrypted_journal)
 
             # display encrypted contents
-            with open(filename) as file:
-                data = file.read()
+            with open(filename) as now_encrypted:
+                data = now_encrypted.read()
                 self.journalEdit.setText(data)
         except FileNotFoundError:
             self.statusbar.showMessage('Encryption failed. No file currently open.', 2000)
@@ -252,6 +260,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def handleDecrypt(self):
+        """Decrypts currently open journal."""
         try:
             key = self.loadKey()
             self.handleSaveJournal()
@@ -268,8 +277,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 file.write(decrypted_journal)
 
             # display decrypted contents
-            with open(filename) as file:
-                data = file.read()
+            with open(filename) as now_decrypted:
+                data = now_decrypted.read()
                 self.journalEdit.setText(data)
         except FileNotFoundError:
             self.statusbar.showMessage('Decryption failed. No file currently open.', 2000)
@@ -277,6 +286,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def handleDeleteJournal(self):
+        """Delete currently open journal."""
         try:
             filename = self.journalName.text()
             if filename != '':
