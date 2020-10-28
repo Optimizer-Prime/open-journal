@@ -435,4 +435,4 @@ class Ui_MainWindow(object):
         self.Delete.setText(_translate("MainWindow", "Delete Journal"))
         self.Close.setText(_translate("MainWindow", "Close Journal"))
         self.Export_key.setText(_translate("MainWindow", "Export encryption key"))
-import ui.resources_rc
+import openjournal.ui.resources_rc

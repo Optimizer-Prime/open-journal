@@ -4,14 +4,14 @@ import os
 import shutil
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox, QPushButton, QLabel
-from ui.MainWindow import Ui_MainWindow
-from ui.AboutWindow import Ui_AboutWindow
+from openjournal.ui.MainWindow import Ui_MainWindow
+from openjournal.ui.AboutWindow import Ui_AboutWindow
 
 
 class AboutWindow(QMainWindow, Ui_AboutWindow):
 
     def __init__(self, *args, **kwargs):
-        super(AboutWindow, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.setupUi(self)
 
         # centers window
@@ -24,7 +24,7 @@ class AboutWindow(QMainWindow, Ui_AboutWindow):
 class MainWindow(QMainWindow, Ui_MainWindow):
 
     def __init__(self, *args, **kwargs):
-        super(MainWindow, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.setupUi(self)
 
         # centers window
@@ -313,8 +313,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         about_window.show()
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
+app = QApplication(sys.argv)
+
+
+def main():
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())

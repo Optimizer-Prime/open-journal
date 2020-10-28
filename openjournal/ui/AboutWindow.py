@@ -46,4 +46,4 @@ class Ui_AboutWindow(object):
         AboutWindow.setWindowTitle(_translate("AboutWindow", "About Open Journal"))
         self.info.setText(_translate("AboutWindow", "<html><head/><body><p>Open Journal v1.0.0</p><p><br/></p><p>Simple, private, open-source journal for linux.</p><p><br/></p><p>For more information visit: </p><p><a href=\"https://github.com/Optimizer-Prime/open-journal\"><span style=\" text-decoration: underline; color:#eeeeec;\">https://github.com/Optimizer-Prime/open-journal</span></a></p><p><br/>Licensed under GPL-3.0</p><p><span style=\" color:#000000;\">Copyright 2020 Stuart Clayton</span></p></body></html>"))
 
-import ui.resources_rc
+import openjournal.ui.resources_rc
