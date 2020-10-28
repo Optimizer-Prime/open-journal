@@ -6,7 +6,7 @@ A simple, private, open-source journal for Linux. No user data is collected.
 ### Encryption
 Journals can be optionally encrypted using a uniquely generated encryption key. The *cryptography* library used is built on AES. The encryption key only needs to be generated once. Export a copy of it from the program and store it in a safe place. 
 
-The encryption key must be stored in the same location as **main.py** or the executable. It is placed here automatically upon generation.
+The encryption key must be stored in the same location as **main.py**. It is placed here automatically upon generation.
 
 ### Installation and Usage
 Install Open Journal via pip. Preferably in a new pip or conda environment for easy management. Use *pip3* if necessary.
