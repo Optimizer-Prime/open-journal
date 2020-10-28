@@ -14,9 +14,14 @@ Install Open Journal via pip. Preferably in a new pip or conda environment for e
 $ pip install open-journal
 ~~~
 
-To run, execute to following from terminal in environment where it was installed.
+To run, execute the following from a terminal. If in specific environment, change to that.
 ~~~
 $ openjournal
+~~~
+
+To remove, simply run:
+~~~
+$ pip uninstall open-journal
 ~~~
 
 ### Screenshots
