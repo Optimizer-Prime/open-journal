@@ -14,6 +14,11 @@ Install Open Journal via pip. Preferably in a new pip or conda environment for e
 $ pip install open-journal
 ~~~
 
+To run, execute to following from terminal in environment where it was installed.
+~~~
+$ openjournal
+~~~
+
 ### Screenshots
 ![Main Menu](/screenshots/open-journal.png)
 
