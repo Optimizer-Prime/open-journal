@@ -6,36 +6,17 @@ Journals can be optionally encrypted using a uniquely generated encryption key. 
 
 The encryption key must be stored in the same location as **Open-Journal.py** or the executable. It is placed here automatically upon generation.
 
-### Prerequisites 
-In order to run Open Journal, you must have the prerequisites defined in **requirements.txt** installed in your environment.
-
-To install *PyQt5*, run one of the following commands:
-~~~
-pip install pyqt5
-~~~
-
-or
-
-~~~
-pip3 install pyqt5
-~~~
-
-To install *cryptography*:
-~~~
-pip3 install cryptography
-~~~
-
 ### Installation and Usage
 To install and use Open Journal, choose one of the following options.
 
-1.) Clone the repository to your computer and run **Open-Journal.py** from your terminal. Alternatively, run it from an IDE of your choice, such as PyCharm.
+1.) Install Open Journal via pip. Preferably in a new pip or conda environment for easy management. Use *pip3* if necessary.
 ~~~
-$ python Open-Journal.py
+$ pip install open-journal
 ~~~
 
 2.) You can download the executable from the *releases* page. It was built using PyInstaller and Python 3.6.12.
 
-Open Journal was developed and tested on Linux (Ubuntu 20.04.1 LTS). However, if you have all requirements met, you should have no issue running it on Windows or MacOS. At least, in its Python form.
+Open Journal was developed and tested on Linux (Ubuntu 20.04.1 LTS). However, if you have all requirements met, you should have no issue running it on Windows or MacOS. At least, when installing via pip.
 
 ### Building from source
 If you wish to build an executable yourself from the source code provided you can do so as outlined here.
