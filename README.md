@@ -1,4 +1,4 @@
-(https://img.shields.io/github/issues/Optimizer-Prime/open-journal)
+![badge1](https://img.shields.io/github/issues/Optimizer-Prime/open-journal)
 
 # open-journal
 A simple, private, open-source journal for Linux. No user data is collected.
