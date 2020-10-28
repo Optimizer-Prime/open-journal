@@ -4,7 +4,7 @@ A simple, private, open-source journal for Linux. No user data is collected.
 ### Encryption
 Journals can be optionally encrypted using a uniquely generated encryption key. The *cryptography* library used is built on AES. The encryption key only needs to be generated once. Export a copy of it from the program and store it in a safe place. 
 
-The encryption key must be stored in the same location as **Open-Journal.py** or the executable. It is placed here automatically upon generation.
+The encryption key must be stored in the same location as **main.py** or the executable. It is placed here automatically upon generation.
 
 ### Installation and Usage
 To install and use Open Journal, choose one of the following options.
@@ -28,10 +28,10 @@ pip install pyinstaller
 
 2.) Create a spec file in the root project directory by running the following command that will use --onefile mode, to include all files in a single executable.
 ~~~
-pyi-makespec --onefile Open-Journal.py
+pyi-makespec --onefile main.py
 ~~~
 
-Add the following lines of code to the beginning of the **Open-Journal.spec** file. If you do not, you will likely encounter a recursion error.
+Add the following lines of code to the beginning of the **main.spec** file. If you do not, you will likely encounter a recursion error.
 ~~~
 # -*- mode: python ; coding: utf-8 -*-
 import sys
@@ -40,9 +40,9 @@ sys.setrecursionlimit(5000)
 
 3.) Build the executable.
 ~~~
-pyinstaller Open-Journal.spec
+pyinstaller main.spec
 ~~~
-A *build* and *dist* folder will be created. The executable is located under *dist* with the name **Open-Journal**.
+A *build* and *dist* folder will be created. The executable is located under *dist* with the name **main**.
 
 ### Screenshots
 ![Main Menu](/screenshots/open-journal.png)
