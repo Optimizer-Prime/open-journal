@@ -127,6 +127,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except FileNotFoundError:
             pass
 
+    # TODO try subprocess for autosave
     def handleSaveJournal(self):
         """Save currently open journal."""
         try:
@@ -320,3 +321,7 @@ def main():
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
+
+
+if __name__ == '__main__':
+    main()
