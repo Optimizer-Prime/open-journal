@@ -1,11 +1,17 @@
 #!/usr/bin/env python
 from cryptography.fernet import Fernet
+import continuous_threading
 import os
 import shutil
 import sys
+import time
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox, QPushButton, QLabel
 from openjournal.ui.MainWindow import Ui_MainWindow
 from openjournal.ui.AboutWindow import Ui_AboutWindow
+
+
+continuous_threading.set_allow_shutdown(True)
+continuous_threading.set_shutdown_timeout(0)  # Default 1
 
 
 class AboutWindow(QMainWindow, Ui_AboutWindow):
@@ -52,15 +58,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Decrypt_Journal.triggered.connect(self.handleDecrypt)
         self.Export_key.triggered.connect(self.exportKey)
         self.Close.triggered.connect(self.handleCloseJournal)
-        self.Exit.triggered.connect(self.onClose)
+        self.Exit.triggered.connect(self.closeEvent)
 
         self.About_Open_Journal.triggered.connect(self.handleAboutWindow)
 
         self.keyStatusWidget()  # check for key
 
-        app.aboutToQuit.connect(self.onClose)
+        th = continuous_threading.Thread(target=self.autosave)
+        th.start()
 
-    def onClose(self):
+    def closeEvent(self, event):
         """Auto-save journal before closing."""
         self.handleSaveJournal()
         sys.exit(0)
@@ -127,7 +134,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except FileNotFoundError:
             pass
 
-    # TODO try subprocess for autosave
     def handleSaveJournal(self):
         """Save currently open journal."""
         try:
@@ -139,6 +145,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             file.close()
         except FileNotFoundError:
             pass
+
+    def autosave(self):
+        while True:
+            try:
+                filename = self.journalName.text()
+                file = open(filename, 'w')
+                text = self.journalEdit.toPlainText()
+                file.write(text)
+                self.statusbar.showMessage(f"Autosaving '{filename}'...", 2000)
+                file.close()
+            except FileNotFoundError:
+                pass
+            time.sleep(15)
 
     def createKey(self):
         """Generates encryption key and saves to file."""
