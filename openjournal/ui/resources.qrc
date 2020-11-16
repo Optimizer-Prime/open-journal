@@ -10,5 +10,6 @@
         <file>resources/new.png</file>
         <file>resources/close.png</file>
         <file>resources/export_key.png</file>
+        <file>resources/logo_small.png</file>
     </qresource>
 </RCC>

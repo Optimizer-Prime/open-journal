@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Open Journal</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/resources/logo_small.png</normaloff>:/resources/logo_small.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(32, 74, 135);</string>
   </property>

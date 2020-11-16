@@ -5,10 +5,11 @@ with open("README.md", "r") as fh:
 
 setup(
     name='open-journal',
-    version='1.1.0',
+    version='1.1.1',
     install_requires=[
     	'pyqt5',
-    	'cryptography'
+    	'cryptography',
+    	'continuous-threading'
     ],
     packages=find_packages(),
     scripts=['openjournal/main.py'],
