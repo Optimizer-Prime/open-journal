@@ -9,7 +9,7 @@ After all edits are done, you need to create a **.py** file from the **.ui** fil
 $ pyuic5 mainwindow.ui -o MainWindow.py
 ~~~
 
-Any python files created this way must be imported into the **main.py** file in the proper format.
+Any python files created this way must be imported into the **main.py** file in the proper format, such as this:
 
 from openjournal.ui.MainWindow import Ui_MainWindow
 
