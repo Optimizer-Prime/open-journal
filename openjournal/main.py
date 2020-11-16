@@ -65,6 +65,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.keyStatusWidget()  # check for key
 
+        # creates thread to run auto-save function
         th = continuous_threading.Thread(target=self.autosave)
         th.start()
 
