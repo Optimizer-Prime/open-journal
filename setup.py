@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='open-journal',
-    version='1.0.1',
+    version='1.1.0',
     install_requires=[
     	'pyqt5',
     	'cryptography'
