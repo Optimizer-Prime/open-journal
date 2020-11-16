@@ -5,6 +5,7 @@ import os
 import shutil
 import sys
 import time
+from PyQt5.QtCore import QThread
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox, QPushButton, QLabel
 from openjournal.ui.MainWindow import Ui_MainWindow
 from openjournal.ui.AboutWindow import Ui_AboutWindow
@@ -147,13 +148,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             pass
 
     def autosave(self):
+        """Auto-saves every 15 seconds, if journal open."""
         while True:
             try:
                 filename = self.journalName.text()
                 file = open(filename, 'w')
                 text = self.journalEdit.toPlainText()
                 file.write(text)
-                self.statusbar.showMessage(f"Autosaving '{filename}'...", 2000)
                 file.close()
             except FileNotFoundError:
                 pass
