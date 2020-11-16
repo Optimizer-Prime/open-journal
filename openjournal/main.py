@@ -5,7 +5,6 @@ import os
 import shutil
 import sys
 import time
-from PyQt5.QtCore import QThread
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDesktopWidget, QFileDialog, QMessageBox, QPushButton, QLabel
 from openjournal.ui.MainWindow import Ui_MainWindow
 from openjournal.ui.AboutWindow import Ui_AboutWindow
