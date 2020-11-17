@@ -50,5 +50,5 @@ class Ui_AboutWindow(object):
     def retranslateUi(self, AboutWindow):
         _translate = QtCore.QCoreApplication.translate
         AboutWindow.setWindowTitle(_translate("AboutWindow", "About Open Journal"))
-        self.info.setText(_translate("AboutWindow", "<html><head/><body><p>Open Journal v1.1.0</p><p><br/></p><p>Simple, private, open-source journal for linux.</p><p><br/></p><p>For more information visit: </p><p><a href=\"https://github.com/Optimizer-Prime/open-journal\"><span style=\" text-decoration: underline; color:#eeeeec;\">https://github.com/Optimizer-Prime/open-journal</span></a></p><p><br/>Licensed under GPL-3.0</p><p><span style=\" color:#000000;\">Copyright 2020 Stuart Clayton</span></p></body></html>"))
+        self.info.setText(_translate("AboutWindow", "<html><head/><body><p>Open Journal v1.1.1</p><p><br/></p><p>Simple, private, open-source journal for linux.</p><p><br/></p><p>For more information visit: </p><p><a href=\"https://github.com/Optimizer-Prime/open-journal\"><span style=\" text-decoration: underline; color:#eeeeec;\">https://github.com/Optimizer-Prime/open-journal</span></a></p><p><br/>Licensed under GPL-3.0</p><p><span style=\" color:#000000;\">Copyright 2020 Stuart Clayton</span></p></body></html>"))
 import openjournal.ui.resources_rc
