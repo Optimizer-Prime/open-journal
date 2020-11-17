@@ -1,4 +1,4 @@
-![release](https://img.shields.io/badge/release-v1.1.1-blue) ![maintained](https://img.shields.io/badge/Maintained%3F-Yes-brightgreen) ![issues](https://img.shields.io/github/issues/Optimizer-Prime/open-journal) ![license](https://img.shields.io/github/license/Optimizer-Prime/open-journal)
+![release](https://img.shields.io/badge/release-v1.1.1-blue) ![maintained](https://img.shields.io/badge/maintained%3F-Yes-brightgreen) ![issues](https://img.shields.io/github/issues/Optimizer-Prime/open-journal) ![license](https://img.shields.io/github/license/Optimizer-Prime/open-journal)
 
 # open-journal
 A simple, private, open-source journal for Linux. No user data is collected.
